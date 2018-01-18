@@ -6,39 +6,41 @@
  * @requires NPM:winston
  * @requires NPM:path
  */
-import winston, { format } from "winston";
-import path from "path";
+import winston, { format } from 'winston';
+import path from 'path';
 
-const { combine, timestamp, label, prettyPrint } = format;
+const {
+  combine, timestamp, label, prettyPrint,
+} = format;
 
 const config = winston.createLogger({
   format: combine(
     label({
-      label: "Hellobooks"
+      label: 'Hellobooks',
     }),
     timestamp(),
-    prettyPrint()
+    prettyPrint(),
   ),
   transports: [
     new winston.transports.File({
-      filename: path.join(__dirname, "../logs/error.logs"),
-      level: "error"
+      filename: path.join(__dirname, '../logs/error.logs'),
+      level: 'error',
     }),
     new winston.transports.File({
-      filename: path.join(__dirname, "../logs/combined.logs")
-    })
-  ]
+      filename: path.join(__dirname, '../logs/combined.logs'),
+    }),
+  ],
 });
 
 const logger = (level, message) => {
   config.log({
     level,
-    message
+    message,
   });
   return {
     isLogged: true,
     message,
-    level
+    level,
   };
 };
 
