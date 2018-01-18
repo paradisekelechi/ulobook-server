@@ -1,0 +1,30 @@
+{
+  "name": "new_app",
+  "version": "1.0.0",
+  "description": "Node express application",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "NODE_ENV=development babel-node app.js",
+    "sync:db": "NODE_ENV=development  babel-node scripts/Synchronize",
+    "reset:db": "NODE_ENV=development  babel-node scripts/Reset"
+  },
+  "author": "Paradise Kelechi",
+  "license": "mit",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
+    "pg": "^7.3.0",
+    "sequelize": "^4.8.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "http": "0.0.0",
+    "morgan": "^1.8.2"
+  }
+}
