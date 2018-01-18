@@ -10,6 +10,7 @@ import http from "http";
 import dotenv from "dotenv";
 
 import routes from "./routes.js";
+import BaseLogger from "./utils/Logger";
 
 dotenv.config();
 
@@ -48,5 +49,6 @@ server.on("error", err => {
   console.log(err);
 });
 server.listen(port, () => {
+  BaseLogger("info", `Server started and listening on ${port}`);
   console.log(`Server started and listening on ${port}`);
 });
