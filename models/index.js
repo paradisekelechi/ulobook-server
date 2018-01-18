@@ -6,17 +6,36 @@ import configObject from '../utils/Config';
 const databaseConfiguration = configObject[process.env.NODE_ENV];
 const basename = path.basename(module.filename);
 const db = {};
+const {
+  Op,
+} = Sequelize;
 let sequelize;
 
 if (databaseConfiguration.use_env_variable) {
   sequelize = new Sequelize(databaseConfiguration.use_env_variable);
 } else {
-  const { database, username, password } = databaseConfiguration;
-  sequelize = new Sequelize(
+  const {
     database,
     username,
     password,
-    databaseConfiguration,
+  } = databaseConfiguration;
+  sequelize = new Sequelize(
+    database,
+    username,
+    password, {
+      dialect: 'postgres',
+      logging: false,
+      freezeTableName: true,
+      operatorsAliases: {
+        $and: Op.and,
+        $or: Op.or,
+        $eq: Op.eq,
+        $gt: Op.gt,
+        $lt: Op.lt,
+        $lte: Op.lte,
+        $like: Op.like,
+      },
+    },
   );
 }
 
