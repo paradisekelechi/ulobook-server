@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import Sequelize from "sequelize";
-import dbConfigObject from "../utils/dbconfig";
+import configObject from "../utils/Config";
 
-const databaseConfiguration = dbConfigObject[process.env.NODE_ENV];
+const databaseConfiguration = configObject[process.env.NODE_ENV];
 const basename = path.basename(module.filename);
 const db = {};
 let sequelize;
