@@ -60,3 +60,5 @@ server.listen(port, () => {
   BaseLogger('info', `Server started and listening on ${port}`);
   console.log(`Server started and listening on ${port}`);
 });
+
+export default app;
