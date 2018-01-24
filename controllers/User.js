@@ -2,6 +2,7 @@
  * Author: Paradise Kelechi (Developer && IT Enthusiast)
  */
 import models from '../models';
+import ResponseHandler from '../utils/ResponseHandler';
 
 const {
   User,
@@ -12,16 +13,13 @@ const users = {
     return User
       .findAll()
       .then((user) => {
-        res.status(200).send({
-          message: 'We made it!!!',
-          user,
-        });
+        ResponseHandler(req, res, 200, true, 'We made it', user, 'user');
       })
       .catch((error) => {
-        res.status(400).send({
-          message: 'Errors encountered when getting users!!!',
-          error,
-        });
+        ResponseHandler(
+          req, res, 400, false, 'Errors encountered when getting users', error,
+          'error',
+        );
       });
   },
   addUser(req, res) {
@@ -30,16 +28,13 @@ const users = {
         username: 'username',
       })
       .then((user) => {
-        res.status(200).send({
-          message: 'We added a user!!!',
-          user,
-        });
+        ResponseHandler(req, res, 200, true, 'We added a user', user, 'user');
       })
       .catch((error) => {
-        res.status(400).send({
-          message: 'Errors encountered when adding user!!!',
-          error,
-        });
+        ResponseHandler(
+          req, res, 400, false, 'Errors encountered when adding a user', error,
+          'error',
+        );
       });
   },
 };

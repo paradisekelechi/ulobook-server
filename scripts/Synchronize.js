@@ -1,4 +1,6 @@
 import models from '../models';
 
-const { sequelize } = models;
-sequelize.sync({ force: true });
+const {
+  sequelize,
+} = models;
+sequelize.sync();
